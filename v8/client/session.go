@@ -12,6 +12,7 @@ import (
 	"github.com/NeilGerring/gokrb5/v8/krberror"
 	"github.com/NeilGerring/gokrb5/v8/messages"
 	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/jcmturner/gofork/encoding/asn1"
 )
 
 // sessions hold TGTs and are keyed on the realm name
@@ -62,9 +63,12 @@ func (s *sessions) get(realm string) (*session, bool) {
 type session struct {
 	realm                string
 	authTime             time.Time
+	startTime            time.Time
 	endTime              time.Time
 	renewTill            time.Time
+	flags                asn1.BitString
 	tgt                  messages.Ticket
+	ticketBytes          []byte
 	sessionKey           types.EncryptionKey
 	sessionKeyExpiration time.Time
 	cancel               chan bool
@@ -82,7 +86,7 @@ type jsonSession struct {
 
 // AddSession adds a session for a realm with a TGT to the client's session cache.
 // A goroutine is started to automatically renew the TGT before expiry.
-func (cl *Client) addSession(tgt messages.Ticket, dep messages.EncKDCRepPart) {
+func (cl *Client) addSession(ticketBytes []byte, tgt messages.Ticket, dep messages.EncKDCRepPart) {
 	if strings.ToLower(tgt.SName.NameString[0]) != "krbtgt" {
 		// Not a TGT
 		return
@@ -91,9 +95,12 @@ func (cl *Client) addSession(tgt messages.Ticket, dep messages.EncKDCRepPart) {
 	s := &session{
 		realm:                realm,
 		authTime:             dep.AuthTime,
+		startTime:            dep.StartTime,
 		endTime:              dep.EndTime,
 		renewTill:            dep.RenewTill,
 		tgt:                  tgt,
+		ticketBytes:          ticketBytes,
+		flags:                dep.Flags,
 		sessionKey:           dep.Key,
 		sessionKeyExpiration: dep.KeyExpiration,
 	}

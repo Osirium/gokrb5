@@ -2,7 +2,9 @@
 package client
 
 import (
+	"encoding/binary"
 	"encoding/json"
+
 	"errors"
 	"fmt"
 	"io"
@@ -19,6 +21,7 @@ import (
 	"github.com/NeilGerring/gokrb5/v8/krberror"
 	"github.com/NeilGerring/gokrb5/v8/messages"
 	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/jcmturner/gofork/encoding/asn1"
 )
 
 // Client side configuration and state.
@@ -100,6 +103,7 @@ func NewFromCCache(c *credentials.CCache, krb5conf *config.Config, settings ...f
 			return cl, fmt.Errorf("cache entry ticket bytes are not valid: %v", err)
 		}
 		cl.cache.addEntry(
+			cred.Ticket,
 			tkt,
 			cred.AuthTime,
 			cred.StartTime,
@@ -187,7 +191,7 @@ func (cl *Client) Login() error {
 	if err != nil {
 		return err
 	}
-	cl.addSession(ASRep.Ticket, ASRep.DecryptedEncPart)
+	cl.addSession(ASRep.TicketBytes, ASRep.Ticket, ASRep.DecryptedEncPart)
 	return nil
 }
 
@@ -229,7 +233,7 @@ func (cl *Client) realmLogin(realm string) error {
 	if err != nil {
 		return err
 	}
-	cl.addSession(tgsRep.Ticket, tgsRep.DecryptedEncPart)
+	cl.addSession(tgsRep.TicketBytes, tgsRep.Ticket, tgsRep.DecryptedEncPart)
 
 	return nil
 }
@@ -326,4 +330,85 @@ func (cl *Client) Print(w io.Writer) {
 
 	k, _ := cl.Credentials.Keytab().JSON()
 	fmt.Fprintf(w, "Keytab:\n%s\n", k)
+}
+
+func appendU16(d []byte, v uint16) []byte {
+	return append(d, byte(v>>8), byte(v))
+}
+
+func appendU32(d []byte, v uint32) []byte {
+	return append(d, byte(v>>24), byte(v>>16), byte(v>>8), byte(v))
+}
+
+// appendPrincipal append a principal and realm to d in the credential cache
+// format. Keytab uses a different format with 2 byte lengths.
+func appendPrincipal(d []byte, princ types.PrincipalName, realm string) []byte {
+	d = appendU32(d, uint32(princ.NameType))
+	d = appendU32(d, uint32(len(princ.NameString)))
+	d = appendU32(d, uint32(len(realm)))
+	d = append(d, realm...)
+	for _, p := range princ.NameString {
+		d = appendU32(d, uint32(len(p)))
+		d = append(d, p...)
+	}
+	return d
+}
+
+func bitStringToFlags(s asn1.BitString) int {
+	y := [4]byte{}
+	for i, b := range s.Bytes {
+		y[i] = b
+	}
+	return int(binary.BigEndian.Uint32(y[:]))
+}
+
+// WriteCCache writes the credential and cached tickets out to a file as a
+// credential cache. This can then be read in by MIT or heimdal kerberos.
+func (cl *Client) WriteCCache(file io.Writer) error {
+	d := make([]byte, 0)
+
+	d = appendU16(d, 0x504) // This should set the credential cache to use kerberos v5 and credential cache version 4
+	d = appendU16(d, 0)     // headerlen
+	d = appendPrincipal(d, cl.Credentials.CName(), cl.Credentials.Realm())
+
+	if _, err := file.Write(d); err != nil {
+		return err
+	}
+
+	for _, session := range cl.sessions.Entries {
+		if !session.valid() {
+			continue
+		}
+
+		realm, tgt, sessionKey := session.tgtDetails()
+		d = d[:0]
+
+		d = appendPrincipal(d, cl.Credentials.CName(), cl.Credentials.Realm())
+		d = appendPrincipal(d, tgt.SName, realm)
+
+		// According to this: https://web.mit.edu/kerberos/krb5-latest/doc/formats/ccache_file_format.html#credential-format
+		// The keyblock section should just be the EncType and key data.
+		d = appendU16(d, uint16(tgt.EncPart.EType))
+		d = appendU32(d, uint32(len(sessionKey.KeyValue)))
+		d = append(d, sessionKey.KeyValue...)
+
+		d = appendU32(d, uint32(session.authTime.Unix()))
+		d = appendU32(d, uint32(session.startTime.Unix()))
+		d = appendU32(d, uint32(session.endTime.Unix()))
+		d = appendU32(d, uint32(session.renewTill.Unix()))
+
+		d = append(d, 0) // is_skey
+		d = appendU32(d, uint32(bitStringToFlags(session.flags)))
+		d = appendU32(d, 0) // num_address
+		d = appendU32(d, 0) // num_authdata
+		d = appendU32(d, uint32(len(session.ticketBytes)))
+		d = append(d, session.ticketBytes...)
+		d = appendU32(d, 0) // second ticket
+
+		if _, err := file.Write(d); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

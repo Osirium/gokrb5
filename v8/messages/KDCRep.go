@@ -40,6 +40,7 @@ type KDCRepFields struct {
 	CRealm           string
 	CName            types.PrincipalName
 	Ticket           Ticket
+	TicketBytes      []byte
 	EncPart          types.EncryptedData
 	DecryptedEncPart EncKDCRepPart
 }
@@ -93,13 +94,14 @@ func (k *ASRep) Unmarshal(b []byte) error {
 		return krberror.Errorf(err, krberror.EncodingError, "error unmarshaling Ticket within AS_REP")
 	}
 	k.KDCRepFields = KDCRepFields{
-		PVNO:    m.PVNO,
-		MsgType: m.MsgType,
-		PAData:  m.PAData,
-		CRealm:  m.CRealm,
-		CName:   m.CName,
-		Ticket:  tkt,
-		EncPart: m.EncPart,
+		PVNO:        m.PVNO,
+		MsgType:     m.MsgType,
+		PAData:      m.PAData,
+		CRealm:      m.CRealm,
+		CName:       m.CName,
+		Ticket:      tkt,
+		TicketBytes: m.Ticket.Bytes,
+		EncPart:     m.EncPart,
 	}
 	return nil
 }
@@ -148,13 +150,14 @@ func (k *TGSRep) Unmarshal(b []byte) error {
 		return krberror.Errorf(err, krberror.EncodingError, "error unmarshaling Ticket within TGS_REP")
 	}
 	k.KDCRepFields = KDCRepFields{
-		PVNO:    m.PVNO,
-		MsgType: m.MsgType,
-		PAData:  m.PAData,
-		CRealm:  m.CRealm,
-		CName:   m.CName,
-		Ticket:  tkt,
-		EncPart: m.EncPart,
+		PVNO:        m.PVNO,
+		MsgType:     m.MsgType,
+		PAData:      m.PAData,
+		CRealm:      m.CRealm,
+		CName:       m.CName,
+		Ticket:      tkt,
+		TicketBytes: m.Ticket.Bytes,
+		EncPart:     m.EncPart,
 	}
 	return nil
 }
@@ -312,6 +315,7 @@ func (k *TGSRep) DecryptEncPart(key types.EncryptionKey) error {
 	if err != nil {
 		return krberror.Errorf(err, krberror.EncodingError, "error unmarshaling encrypted part")
 	}
+	fmt.Printf("%+v\n\n", denc)
 	k.DecryptedEncPart = denc
 	return nil
 }

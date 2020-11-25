@@ -182,11 +182,17 @@ func tgsReq(cname, sname types.PrincipalName, kdcRealm string, renewal bool, c *
 		return TGSReq{}, err
 	}
 	t := time.Now().UTC()
+
+	// Copy the default options to make this thread safe
+	kopts := types.NewKrbFlags()
+	copy(kopts.Bytes, c.LibDefaults.KDCDefaultOptions.Bytes)
+	kopts.BitLength = c.LibDefaults.KDCDefaultOptions.BitLength
+
 	k := KDCReqFields{
 		PVNO:    iana.PVNO,
 		MsgType: msgtype.KRB_TGS_REQ,
 		ReqBody: KDCReqBody{
-			KDCOptions: types.NewKrbFlags(),
+			KDCOptions: kopts,
 			Realm:      kdcRealm,
 			CName:      cname, // Add the CName to make validation of the reply easier
 			SName:      sname,
@@ -198,6 +204,7 @@ func tgsReq(cname, sname types.PrincipalName, kdcRealm string, renewal bool, c *
 	}
 	if c.LibDefaults.Forwardable {
 		types.SetFlag(&k.ReqBody.KDCOptions, flags.Forwardable)
+
 	}
 	if c.LibDefaults.Canonicalize {
 		types.SetFlag(&k.ReqBody.KDCOptions, flags.Canonicalize)
@@ -221,6 +228,7 @@ func tgsReq(cname, sname types.PrincipalName, kdcRealm string, renewal bool, c *
 		types.SetFlag(&k.ReqBody.KDCOptions, flags.Renew)
 		types.SetFlag(&k.ReqBody.KDCOptions, flags.Renewable)
 	}
+
 	return TGSReq{
 		k,
 	}, nil
