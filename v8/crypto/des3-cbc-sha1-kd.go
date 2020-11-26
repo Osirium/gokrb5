@@ -7,10 +7,10 @@ import (
 	"errors"
 	"hash"
 
-	"github.com/NeilGerring/gokrb5/v8/crypto/common"
-	"github.com/NeilGerring/gokrb5/v8/crypto/rfc3961"
-	"github.com/NeilGerring/gokrb5/v8/iana/chksumtype"
-	"github.com/NeilGerring/gokrb5/v8/iana/etypeID"
+	"github.com/Osirium/gokrb5/v8/crypto/common"
+	"github.com/Osirium/gokrb5/v8/crypto/rfc3961"
+	"github.com/Osirium/gokrb5/v8/iana/chksumtype"
+	"github.com/Osirium/gokrb5/v8/iana/etypeID"
 )
 
 //RFC: 3961 Section 6.3

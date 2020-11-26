@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NeilGerring/gokrb5/v8/messages"
-	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/Osirium/gokrb5/v8/messages"
+	"github.com/Osirium/gokrb5/v8/types"
 )
 
 // Cache for service tickets held by the client.

@@ -3,8 +3,8 @@ package client
 import (
 	"testing"
 
-	"github.com/NeilGerring/gokrb5/v8/config"
-	"github.com/NeilGerring/gokrb5/v8/keytab"
+	"github.com/Osirium/gokrb5/v8/config"
+	"github.com/Osirium/gokrb5/v8/keytab"
 )
 
 func TestAssumePreauthentication(t *testing.T) {

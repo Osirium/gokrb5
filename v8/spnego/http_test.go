@@ -20,12 +20,12 @@ import (
 
 	"github.com/gorilla/sessions"
 	"github.com/jcmturner/goidentity/v6"
-	"github.com/NeilGerring/gokrb5/v8/client"
-	"github.com/NeilGerring/gokrb5/v8/config"
-	"github.com/NeilGerring/gokrb5/v8/keytab"
-	"github.com/NeilGerring/gokrb5/v8/service"
-	"github.com/NeilGerring/gokrb5/v8/test"
-	"github.com/NeilGerring/gokrb5/v8/test/testdata"
+	"github.com/Osirium/gokrb5/v8/client"
+	"github.com/Osirium/gokrb5/v8/config"
+	"github.com/Osirium/gokrb5/v8/keytab"
+	"github.com/Osirium/gokrb5/v8/service"
+	"github.com/Osirium/gokrb5/v8/test"
+	"github.com/Osirium/gokrb5/v8/test/testdata"
 	"github.com/stretchr/testify/assert"
 )
 

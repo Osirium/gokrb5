@@ -8,7 +8,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/NeilGerring/gokrb5/v8/crypto/etype"
+	"github.com/Osirium/gokrb5/v8/crypto/etype"
 )
 
 // EncryptData encrypts the data provided using methods specific to the etype provided as defined in RFC 4757.

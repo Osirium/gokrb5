@@ -8,7 +8,7 @@ Config instances can be created by loading from a file path or by passing a stri
 relevant method:
 
 ```go
-import "github.com/NeilGerring/gokrb5/v8/config"
+import "github.com/Osirium/gokrb5/v8/config"
 cfg, err := config.Load("/path/to/config/file")
 cfg, err := config.NewConfigFromString(krb5Str) //String must have appropriate newline separations
 cfg, err := config.NewConfigFromReader(reader)
@@ -20,7 +20,7 @@ cfg, err := config.NewConfigFromScanner(scanner)
 Standard keytab files can be read from a file or from a slice of bytes:
 
 ```go
-import 	"github.com/NeilGerring/gokrb5/v8/keytab"
+import 	"github.com/Osirium/gokrb5/v8/keytab"
 ktFromFile, err := keytab.Load("/path/to/file.keytab")
 ktFromBytes, err := keytab.Parse(b)
 
@@ -34,7 +34,7 @@ ktFromBytes, err := keytab.Parse(b)
 A configuration must also be passed. Additionally optional additional settings can be provided.
 
 ```go
-import 	"github.com/NeilGerring/gokrb5/v8/client"
+import 	"github.com/Osirium/gokrb5/v8/client"
 cl := client.NewWithPassword("username", "REALM.COM", "password", cfg)
 cl := client.NewWithKeytab("username", "REALM.COM", kt, cfg)
 ```
@@ -280,7 +280,7 @@ if creds != nil && creds.Authenticated() {
 To validate the AP_REQ sent by the client on the service side call this method:
 
 ```go
-import 	"github.com/NeilGerring/gokrb5/v8/service"
+import 	"github.com/Osirium/gokrb5/v8/service"
 s := service.NewSettings(&kt) // kt is a keytab and optional settings can also be provided.
 if ok, creds, err := service.VerifyAPREQ(&APReq, s); ok {
         // Perform application specific actions

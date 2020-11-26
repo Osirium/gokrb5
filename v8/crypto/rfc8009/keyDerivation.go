@@ -6,8 +6,8 @@ import (
 	"encoding/hex"
 	"errors"
 
-	"github.com/NeilGerring/gokrb5/v8/crypto/etype"
-	"github.com/NeilGerring/gokrb5/v8/iana/etypeID"
+	"github.com/Osirium/gokrb5/v8/crypto/etype"
+	"github.com/Osirium/gokrb5/v8/iana/etypeID"
 	"golang.org/x/crypto/pbkdf2"
 )
 

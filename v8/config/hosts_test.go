@@ -3,8 +3,8 @@ package config
 import (
 	"testing"
 
-	"github.com/NeilGerring/gokrb5/v8/test"
-	"github.com/NeilGerring/gokrb5/v8/test/testdata"
+	"github.com/Osirium/gokrb5/v8/test"
+	"github.com/Osirium/gokrb5/v8/test/testdata"
 	"github.com/stretchr/testify/assert"
 )
 
