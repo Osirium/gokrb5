@@ -18,14 +18,14 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/gorilla/sessions"
-	"github.com/jcmturner/goidentity/v6"
 	"github.com/NeilGerring/gokrb5/v8/client"
 	"github.com/NeilGerring/gokrb5/v8/config"
 	"github.com/NeilGerring/gokrb5/v8/keytab"
 	"github.com/NeilGerring/gokrb5/v8/service"
 	"github.com/NeilGerring/gokrb5/v8/test"
 	"github.com/NeilGerring/gokrb5/v8/test/testdata"
+	"github.com/gorilla/sessions"
+	"github.com/jcmturner/goidentity/v6"
 	"github.com/stretchr/testify/assert"
 )
 

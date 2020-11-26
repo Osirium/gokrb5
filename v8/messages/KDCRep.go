@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/jcmturner/gofork/encoding/asn1"
 	"github.com/NeilGerring/gokrb5/v8/asn1tools"
 	"github.com/NeilGerring/gokrb5/v8/config"
 	"github.com/NeilGerring/gokrb5/v8/credentials"
@@ -19,6 +18,7 @@ import (
 	"github.com/NeilGerring/gokrb5/v8/iana/patype"
 	"github.com/NeilGerring/gokrb5/v8/krberror"
 	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/jcmturner/gofork/encoding/asn1"
 )
 
 type marshalKDCRep struct {

@@ -8,10 +8,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/jcmturner/aescts/v2"
 	"github.com/NeilGerring/gokrb5/v8/crypto/common"
 	"github.com/NeilGerring/gokrb5/v8/crypto/etype"
 	"github.com/NeilGerring/gokrb5/v8/iana/etypeID"
+	"github.com/jcmturner/aescts/v2"
 )
 
 // EncryptData encrypts the data provided using methods specific to the etype provided as defined in RFC 8009.

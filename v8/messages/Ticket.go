@@ -5,7 +5,6 @@ import (
 	"log"
 	"time"
 
-	"github.com/jcmturner/gofork/encoding/asn1"
 	"github.com/NeilGerring/gokrb5/v8/asn1tools"
 	"github.com/NeilGerring/gokrb5/v8/crypto"
 	"github.com/NeilGerring/gokrb5/v8/iana"
@@ -18,6 +17,7 @@ import (
 	"github.com/NeilGerring/gokrb5/v8/krberror"
 	"github.com/NeilGerring/gokrb5/v8/pac"
 	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/jcmturner/gofork/encoding/asn1"
 )
 
 // Reference: https://www.ietf.org/rfc/rfc4120.txt

@@ -7,10 +7,10 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/hashicorp/go-uuid"
 	"github.com/NeilGerring/gokrb5/v8/iana/nametype"
 	"github.com/NeilGerring/gokrb5/v8/keytab"
 	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/hashicorp/go-uuid"
 )
 
 const (

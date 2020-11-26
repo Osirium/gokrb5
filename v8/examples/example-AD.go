@@ -12,8 +12,6 @@ import (
 	"net/http/httptest"
 	"os"
 
-	"github.com/gorilla/sessions"
-	"github.com/jcmturner/goidentity/v6"
 	"github.com/NeilGerring/gokrb5/v8/client"
 	"github.com/NeilGerring/gokrb5/v8/config"
 	"github.com/NeilGerring/gokrb5/v8/credentials"
@@ -21,6 +19,8 @@ import (
 	"github.com/NeilGerring/gokrb5/v8/service"
 	"github.com/NeilGerring/gokrb5/v8/spnego"
 	"github.com/NeilGerring/gokrb5/v8/test/testdata"
+	"github.com/gorilla/sessions"
+	"github.com/jcmturner/goidentity/v6"
 )
 
 func main() {
