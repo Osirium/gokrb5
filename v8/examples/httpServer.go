@@ -10,10 +10,10 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/NeilGerring/gokrb5/v8/keytab"
-	"github.com/NeilGerring/gokrb5/v8/service"
-	"github.com/NeilGerring/gokrb5/v8/spnego"
-	"github.com/NeilGerring/gokrb5/v8/test/testdata"
+	"github.com/Osirium/gokrb5/v8/keytab"
+	"github.com/Osirium/gokrb5/v8/service"
+	"github.com/Osirium/gokrb5/v8/spnego"
+	"github.com/Osirium/gokrb5/v8/test/testdata"
 	"github.com/gorilla/sessions"
 	"github.com/jcmturner/goidentity/v6"
 )

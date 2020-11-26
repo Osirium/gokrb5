@@ -4,8 +4,8 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/NeilGerring/gokrb5/v8/crypto/common"
-	"github.com/NeilGerring/gokrb5/v8/crypto/rfc8009"
+	"github.com/Osirium/gokrb5/v8/crypto/common"
+	"github.com/Osirium/gokrb5/v8/crypto/rfc8009"
 	"github.com/stretchr/testify/assert"
 )
 

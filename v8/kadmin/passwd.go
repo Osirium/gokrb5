@@ -2,10 +2,10 @@
 package kadmin
 
 import (
-	"github.com/NeilGerring/gokrb5/v8/crypto"
-	"github.com/NeilGerring/gokrb5/v8/krberror"
-	"github.com/NeilGerring/gokrb5/v8/messages"
-	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/Osirium/gokrb5/v8/crypto"
+	"github.com/Osirium/gokrb5/v8/krberror"
+	"github.com/Osirium/gokrb5/v8/messages"
+	"github.com/Osirium/gokrb5/v8/types"
 )
 
 // ChangePasswdMsg generate a change password request and also return the key needed to decrypt the reply.

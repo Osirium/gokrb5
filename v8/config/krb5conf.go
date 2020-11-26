@@ -16,7 +16,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/NeilGerring/gokrb5/v8/iana/etypeID"
+	"github.com/Osirium/gokrb5/v8/iana/etypeID"
 	"github.com/jcmturner/gofork/encoding/asn1"
 )
 

@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NeilGerring/gokrb5/v8/iana"
-	"github.com/NeilGerring/gokrb5/v8/iana/addrtype"
-	"github.com/NeilGerring/gokrb5/v8/iana/msgtype"
-	"github.com/NeilGerring/gokrb5/v8/test/testdata"
+	"github.com/Osirium/gokrb5/v8/iana"
+	"github.com/Osirium/gokrb5/v8/iana/addrtype"
+	"github.com/Osirium/gokrb5/v8/iana/msgtype"
+	"github.com/Osirium/gokrb5/v8/test/testdata"
 	"github.com/stretchr/testify/assert"
 )
 

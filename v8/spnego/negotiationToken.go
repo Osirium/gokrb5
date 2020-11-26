@@ -5,11 +5,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/NeilGerring/gokrb5/v8/client"
-	"github.com/NeilGerring/gokrb5/v8/gssapi"
-	"github.com/NeilGerring/gokrb5/v8/messages"
-	"github.com/NeilGerring/gokrb5/v8/service"
-	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/Osirium/gokrb5/v8/client"
+	"github.com/Osirium/gokrb5/v8/gssapi"
+	"github.com/Osirium/gokrb5/v8/messages"
+	"github.com/Osirium/gokrb5/v8/service"
+	"github.com/Osirium/gokrb5/v8/types"
 	"github.com/jcmturner/gofork/encoding/asn1"
 )
 

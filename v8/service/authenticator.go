@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/NeilGerring/gokrb5/v8/client"
-	"github.com/NeilGerring/gokrb5/v8/config"
-	"github.com/NeilGerring/gokrb5/v8/credentials"
+	"github.com/Osirium/gokrb5/v8/client"
+	"github.com/Osirium/gokrb5/v8/config"
+	"github.com/Osirium/gokrb5/v8/credentials"
 	goidentity "github.com/jcmturner/goidentity/v6"
 )
 

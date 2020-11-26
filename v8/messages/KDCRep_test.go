@@ -6,14 +6,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NeilGerring/gokrb5/v8/credentials"
-	"github.com/NeilGerring/gokrb5/v8/iana"
-	"github.com/NeilGerring/gokrb5/v8/iana/etypeID"
-	"github.com/NeilGerring/gokrb5/v8/iana/msgtype"
-	"github.com/NeilGerring/gokrb5/v8/iana/nametype"
-	"github.com/NeilGerring/gokrb5/v8/iana/patype"
-	"github.com/NeilGerring/gokrb5/v8/keytab"
-	"github.com/NeilGerring/gokrb5/v8/test/testdata"
+	"github.com/Osirium/gokrb5/v8/credentials"
+	"github.com/Osirium/gokrb5/v8/iana"
+	"github.com/Osirium/gokrb5/v8/iana/etypeID"
+	"github.com/Osirium/gokrb5/v8/iana/msgtype"
+	"github.com/Osirium/gokrb5/v8/iana/nametype"
+	"github.com/Osirium/gokrb5/v8/iana/patype"
+	"github.com/Osirium/gokrb5/v8/keytab"
+	"github.com/Osirium/gokrb5/v8/test/testdata"
 	"github.com/stretchr/testify/assert"
 )
 

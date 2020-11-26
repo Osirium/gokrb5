@@ -8,9 +8,9 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/NeilGerring/gokrb5/v8/asn1tools"
-	"github.com/NeilGerring/gokrb5/v8/iana"
-	"github.com/NeilGerring/gokrb5/v8/iana/asnAppTag"
+	"github.com/Osirium/gokrb5/v8/asn1tools"
+	"github.com/Osirium/gokrb5/v8/iana"
+	"github.com/Osirium/gokrb5/v8/iana/asnAppTag"
 	"github.com/jcmturner/gofork/encoding/asn1"
 )
 

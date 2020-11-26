@@ -12,12 +12,12 @@ import (
 	"net/http/httptest"
 	"os"
 
-	"github.com/NeilGerring/gokrb5/v8/client"
-	"github.com/NeilGerring/gokrb5/v8/config"
-	"github.com/NeilGerring/gokrb5/v8/keytab"
-	"github.com/NeilGerring/gokrb5/v8/service"
-	"github.com/NeilGerring/gokrb5/v8/spnego"
-	"github.com/NeilGerring/gokrb5/v8/test/testdata"
+	"github.com/Osirium/gokrb5/v8/client"
+	"github.com/Osirium/gokrb5/v8/config"
+	"github.com/Osirium/gokrb5/v8/keytab"
+	"github.com/Osirium/gokrb5/v8/service"
+	"github.com/Osirium/gokrb5/v8/spnego"
+	"github.com/Osirium/gokrb5/v8/test/testdata"
 	"github.com/jcmturner/goidentity/v6"
 )
 

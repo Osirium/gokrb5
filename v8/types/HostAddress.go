@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/NeilGerring/gokrb5/v8/iana/addrtype"
+	"github.com/Osirium/gokrb5/v8/iana/addrtype"
 	"github.com/jcmturner/gofork/encoding/asn1"
 )
 

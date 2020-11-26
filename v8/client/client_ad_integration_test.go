@@ -6,13 +6,13 @@ import (
 	"log"
 	"testing"
 
-	"github.com/NeilGerring/gokrb5/v8/config"
-	"github.com/NeilGerring/gokrb5/v8/iana/etypeID"
-	"github.com/NeilGerring/gokrb5/v8/iana/nametype"
-	"github.com/NeilGerring/gokrb5/v8/keytab"
-	"github.com/NeilGerring/gokrb5/v8/test"
-	"github.com/NeilGerring/gokrb5/v8/test/testdata"
-	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/Osirium/gokrb5/v8/config"
+	"github.com/Osirium/gokrb5/v8/iana/etypeID"
+	"github.com/Osirium/gokrb5/v8/iana/nametype"
+	"github.com/Osirium/gokrb5/v8/keytab"
+	"github.com/Osirium/gokrb5/v8/test"
+	"github.com/Osirium/gokrb5/v8/test/testdata"
+	"github.com/Osirium/gokrb5/v8/types"
 	"github.com/stretchr/testify/assert"
 )
 

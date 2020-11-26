@@ -8,14 +8,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NeilGerring/gokrb5/v8/iana"
-	"github.com/NeilGerring/gokrb5/v8/iana/addrtype"
-	"github.com/NeilGerring/gokrb5/v8/iana/adtype"
-	"github.com/NeilGerring/gokrb5/v8/iana/nametype"
-	"github.com/NeilGerring/gokrb5/v8/iana/trtype"
-	"github.com/NeilGerring/gokrb5/v8/keytab"
-	"github.com/NeilGerring/gokrb5/v8/test/testdata"
-	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/Osirium/gokrb5/v8/iana"
+	"github.com/Osirium/gokrb5/v8/iana/addrtype"
+	"github.com/Osirium/gokrb5/v8/iana/adtype"
+	"github.com/Osirium/gokrb5/v8/iana/nametype"
+	"github.com/Osirium/gokrb5/v8/iana/trtype"
+	"github.com/Osirium/gokrb5/v8/keytab"
+	"github.com/Osirium/gokrb5/v8/test/testdata"
+	"github.com/Osirium/gokrb5/v8/types"
 	"github.com/stretchr/testify/assert"
 )
 

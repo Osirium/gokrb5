@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/NeilGerring/gokrb5/v8/iana/patype"
+	"github.com/Osirium/gokrb5/v8/iana/patype"
 	"github.com/jcmturner/gofork/encoding/asn1"
 )
 

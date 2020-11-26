@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 	"errors"
 
-	"github.com/NeilGerring/gokrb5/v8/crypto/etype"
+	"github.com/Osirium/gokrb5/v8/crypto/etype"
 	"github.com/jcmturner/gofork/x/crypto/pbkdf2"
 )
 

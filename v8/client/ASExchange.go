@@ -1,14 +1,14 @@
 package client
 
 import (
-	"github.com/NeilGerring/gokrb5/v8/crypto"
-	"github.com/NeilGerring/gokrb5/v8/crypto/etype"
-	"github.com/NeilGerring/gokrb5/v8/iana/errorcode"
-	"github.com/NeilGerring/gokrb5/v8/iana/keyusage"
-	"github.com/NeilGerring/gokrb5/v8/iana/patype"
-	"github.com/NeilGerring/gokrb5/v8/krberror"
-	"github.com/NeilGerring/gokrb5/v8/messages"
-	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/Osirium/gokrb5/v8/crypto"
+	"github.com/Osirium/gokrb5/v8/crypto/etype"
+	"github.com/Osirium/gokrb5/v8/iana/errorcode"
+	"github.com/Osirium/gokrb5/v8/iana/keyusage"
+	"github.com/Osirium/gokrb5/v8/iana/patype"
+	"github.com/Osirium/gokrb5/v8/krberror"
+	"github.com/Osirium/gokrb5/v8/messages"
+	"github.com/Osirium/gokrb5/v8/types"
 )
 
 // ASExchange performs an AS exchange for the client to retrieve a TGT.

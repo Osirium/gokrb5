@@ -4,10 +4,10 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/NeilGerring/gokrb5/v8/iana"
-	"github.com/NeilGerring/gokrb5/v8/iana/msgtype"
-	"github.com/NeilGerring/gokrb5/v8/iana/nametype"
-	"github.com/NeilGerring/gokrb5/v8/test/testdata"
+	"github.com/Osirium/gokrb5/v8/iana"
+	"github.com/Osirium/gokrb5/v8/iana/msgtype"
+	"github.com/Osirium/gokrb5/v8/iana/nametype"
+	"github.com/Osirium/gokrb5/v8/test/testdata"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -3,7 +3,7 @@ package types
 import (
 	"crypto/rand"
 
-	"github.com/NeilGerring/gokrb5/v8/crypto/etype"
+	"github.com/Osirium/gokrb5/v8/crypto/etype"
 	"github.com/jcmturner/gofork/encoding/asn1"
 )
 

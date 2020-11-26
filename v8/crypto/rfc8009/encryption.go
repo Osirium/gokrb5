@@ -8,9 +8,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/NeilGerring/gokrb5/v8/crypto/common"
-	"github.com/NeilGerring/gokrb5/v8/crypto/etype"
-	"github.com/NeilGerring/gokrb5/v8/iana/etypeID"
+	"github.com/Osirium/gokrb5/v8/crypto/common"
+	"github.com/Osirium/gokrb5/v8/crypto/etype"
+	"github.com/Osirium/gokrb5/v8/iana/etypeID"
 	"github.com/jcmturner/aescts/v2"
 )
 

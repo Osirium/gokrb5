@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"errors"
-	"github.com/NeilGerring/gokrb5/v8/types"
+	"github.com/Osirium/gokrb5/v8/types"
 	"github.com/jcmturner/gofork/encoding/asn1"
 	"io/ioutil"
 	"strings"
