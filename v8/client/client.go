@@ -89,12 +89,13 @@ func NewFromCCache(c *credentials.CCache, krb5conf *config.Config, settings ...f
 		return cl, fmt.Errorf("TGT bytes in cache are not valid: %v", err)
 	}
 	cl.sessions.Entries[c.DefaultPrincipal.Realm] = &session{
-		realm:      c.DefaultPrincipal.Realm,
-		authTime:   cred.AuthTime,
-		endTime:    cred.EndTime,
-		renewTill:  cred.RenewTill,
-		tgt:        tgt,
-		sessionKey: cred.Key,
+		realm:       c.DefaultPrincipal.Realm,
+		authTime:    cred.AuthTime,
+		endTime:     cred.EndTime,
+		renewTill:   cred.RenewTill,
+		tgt:         tgt,
+		sessionKey:  cred.Key,
+		ticketBytes: cred.Ticket,
 	}
 	for _, cred := range c.GetEntries() {
 		var tkt messages.Ticket
