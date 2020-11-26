@@ -19,14 +19,13 @@ type Cache struct {
 
 // CacheEntry holds details for a cache entry.
 type CacheEntry struct {
-	SPN         string
-	TicketBytes []byte
-	Ticket      messages.Ticket `json:"-"`
-	AuthTime    time.Time
-	StartTime   time.Time
-	EndTime     time.Time
-	RenewTill   time.Time
-	SessionKey  types.EncryptionKey `json:"-"`
+	SPN        string
+	Ticket     messages.Ticket `json:"-"`
+	AuthTime   time.Time
+	StartTime  time.Time
+	EndTime    time.Time
+	RenewTill  time.Time
+	SessionKey types.EncryptionKey `json:"-"`
 }
 
 // NewCache creates a new client ticket cache instance.
@@ -65,19 +64,18 @@ func (c *Cache) JSON() (string, error) {
 }
 
 // addEntry adds a ticket to the cache.
-func (c *Cache) addEntry(ticket []byte, tkt messages.Ticket, authTime, startTime, endTime, renewTill time.Time, sessionKey types.EncryptionKey) CacheEntry {
+func (c *Cache) addEntry(tkt messages.Ticket, authTime, startTime, endTime, renewTill time.Time, sessionKey types.EncryptionKey) CacheEntry {
 	spn := tkt.SName.PrincipalNameString()
 	c.mux.Lock()
 	defer c.mux.Unlock()
 	(*c).Entries[spn] = CacheEntry{
-		SPN:         spn,
-		TicketBytes: ticket,
-		Ticket:      tkt,
-		AuthTime:    authTime,
-		StartTime:   startTime,
-		EndTime:     endTime,
-		RenewTill:   renewTill,
-		SessionKey:  sessionKey,
+		SPN:        spn,
+		Ticket:     tkt,
+		AuthTime:   authTime,
+		StartTime:  startTime,
+		EndTime:    endTime,
+		RenewTill:  renewTill,
+		SessionKey: sessionKey,
 	}
 	return c.Entries[spn]
 }

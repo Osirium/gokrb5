@@ -67,7 +67,6 @@ func (cl *Client) TGSExchange(tgsReq messages.TGSReq, kdcRealm string, tgt messa
 		return cl.TGSExchange(tgsReq, realm, tgsRep.Ticket, tgsRep.DecryptedEncPart.Key, referral)
 	}
 	cl.cache.addEntry(
-		tgsRep.TicketBytes,
 		tgsRep.Ticket,
 		tgsRep.DecryptedEncPart.AuthTime,
 		tgsRep.DecryptedEncPart.StartTime,
