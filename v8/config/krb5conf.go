@@ -304,10 +304,15 @@ func (l *LibDefaults) parseLines(lines []string) error {
 			l.VerifyAPReqNofail = v
 		}
 	}
+	l.SetDefaultEnctypeIDs()
+	return nil
+}
+
+// SetDefaultEnctypeIDs allows for updating the default enctype ids when AllowWeakCrypto has changed
+func (l *LibDefaults) SetDefaultEnctypeIDs() {
 	l.DefaultTGSEnctypeIDs = parseETypes(l.DefaultTGSEnctypes, l.AllowWeakCrypto)
 	l.DefaultTktEnctypeIDs = parseETypes(l.DefaultTktEnctypes, l.AllowWeakCrypto)
 	l.PermittedEnctypeIDs = parseETypes(l.PermittedEnctypes, l.AllowWeakCrypto)
-	return nil
 }
 
 // Realm represents an entry in the [realms] section of the configuration.
