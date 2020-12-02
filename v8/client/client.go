@@ -89,13 +89,12 @@ func NewFromCCache(c *credentials.CCache, krb5conf *config.Config, settings ...f
 		return cl, fmt.Errorf("TGT bytes in cache are not valid: %v", err)
 	}
 	cl.sessions.Entries[c.DefaultPrincipal.Realm] = &session{
-		realm:       c.DefaultPrincipal.Realm,
-		authTime:    cred.AuthTime,
-		endTime:     cred.EndTime,
-		renewTill:   cred.RenewTill,
-		tgt:         tgt,
-		sessionKey:  cred.Key,
-		ticketBytes: cred.Ticket,
+		realm:      c.DefaultPrincipal.Realm,
+		authTime:   cred.AuthTime,
+		endTime:    cred.EndTime,
+		renewTill:  cred.RenewTill,
+		tgt:        tgt,
+		sessionKey: cred.Key,
 	}
 	for _, cred := range c.GetEntries() {
 		var tkt messages.Ticket
@@ -191,7 +190,7 @@ func (cl *Client) Login() error {
 	if err != nil {
 		return err
 	}
-	cl.addSession(ASRep.TicketBytes, ASRep.Ticket, ASRep.DecryptedEncPart)
+	cl.addSession(ASRep.Ticket, ASRep.DecryptedEncPart)
 	return nil
 }
 
@@ -233,7 +232,7 @@ func (cl *Client) realmLogin(realm string) error {
 	if err != nil {
 		return err
 	}
-	cl.addSession(tgsRep.TicketBytes, tgsRep.Ticket, tgsRep.DecryptedEncPart)
+	cl.addSession(tgsRep.Ticket, tgsRep.DecryptedEncPart)
 
 	return nil
 }
@@ -397,12 +396,16 @@ func (cl *Client) WriteCCache(file io.Writer) error {
 		d = appendU32(d, uint32(session.endTime.Unix()))
 		d = appendU32(d, uint32(session.renewTill.Unix()))
 
+		ticketBytes, err := session.tgt.Marshal()
+		if err != nil {
+			return err
+		}
 		d = append(d, 0) // is_skey
 		d = appendU32(d, uint32(bitStringToFlags(session.flags)))
 		d = appendU32(d, 0) // num_address
 		d = appendU32(d, 0) // num_authdata
-		d = appendU32(d, uint32(len(session.ticketBytes)))
-		d = append(d, session.ticketBytes...)
+		d = appendU32(d, uint32(len(ticketBytes)))
+		d = append(d, ticketBytes...)
 		d = appendU32(d, 0) // second ticket
 
 		if _, err := file.Write(d); err != nil {
